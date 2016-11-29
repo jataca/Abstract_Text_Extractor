@@ -1,0 +1,3 @@
+ISSUES:
+
+1. ocean_pride_abstract - address - 21ST is turned into 215T
