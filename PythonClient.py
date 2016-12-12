@@ -14,6 +14,20 @@ sock.connect(server_address)
 try:
 
     # Send data
+    
+    # Try sending a file in 1024 byte chunks 
+    fileOpen = open(fileNameList[0], 'r')
+    print 'Sending...'
+    fileRead = fileOpen.read(1024)
+    while (l):
+        print 'Sending...'
+        fileSend.send(fileRead)
+        fileRead = fileOpen.read(1024)
+    
+    # Try this to see if we can send the entire pdf at once
+    sock.sendall(fileOpen) 
+    
+    # Tested sending a string
     message = 'This is the message.  It will be repeated.'
     print >>sys.stderr, 'sending "%s"' % message
     sock.sendall(message)
