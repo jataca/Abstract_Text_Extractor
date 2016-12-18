@@ -38,6 +38,7 @@ while True:
     try:
         print >>sys.stderr, 'connection from', client_address
 
+        '''
         # Receive the data in small chunks and retransmit it
         while True:
             data = connection.recv(64)
@@ -48,6 +49,22 @@ while True:
             else:
                 print >>sys.stderr, 'no more data from', client_address
                 break
+        '''
+        with open('received_file.pdf', 'wb') as f:
+            print 'file opened'
+            while True:
+                print('receiving data...')
+                data = connection.recv(1024)
+                print('data=%s', (data))
+                if not data:
+                    break
+                # write data to a file
+                f.write(data)
+
+        f.close()
+        print('Successfully get the file')
+        connection.close()
+        print('connection closed')
 
     except KeyboardInterrupt:
         # Clean up the connection
