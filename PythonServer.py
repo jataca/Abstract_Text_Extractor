@@ -11,7 +11,7 @@ listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # bind() is used to associate the socket with the server address. The address is localhost, referring to the current server, and the port number is PORT.
-listen_socket.bind(('localhost', PORT))
+listen_socket.bind(('192.168.1.24', PORT))
 
 # Listen for incoming connections
 listen_socket.listen(1)
@@ -50,7 +50,7 @@ while True:
                 print >>sys.stderr, 'no more data from', client_address
                 break
         '''
-        with open('received_file.pdf', 'wb') as f:
+        with open('fromPreston.pdf', 'wb') as f:
             print 'file opened'
             while True:
                 print('receiving data...')
